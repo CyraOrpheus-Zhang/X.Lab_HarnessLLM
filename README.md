@@ -113,6 +113,6 @@ Runpod 当前列出的 Serverless Worker 可按任务伸缩并在空闲时缩到
 - MediaCrawler 仓库 README 明确写明仅供学习研究并禁止商业用途，因此不应把它直接用于你的商业自媒体热点采集管线。[MediaCrawler README](https://github.com/NanmiCoder/MediaCrawler)
 - 短视频采用 ArcReel 的“阶段式制作、每阶段可复核/重做、成本可见、最终人工审片”思路；它支持输出剪映草稿，但 README 表示 CapCut 兼容性仍未确认。[ArcReel](https://github.com/ArcReel/ArcReel)
 
-## 下一步
+## 未来版本
 
-先运行本地 CLI 确认响应时间和中文表现。然后再接 Slack（需要创建 Slack App 并提供 Bot Token / App Token）、Zotero（确认本机 Zotero 版本和存储位置）以及视频素材工作目录。密钥只填到本机 `.env`，不要提交到版本库。
+实现远程管理主机文件并回传，优化日常AIGC图片任务，完善多agent协调逻辑层
