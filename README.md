@@ -2,9 +2,6 @@
 
 一个以本地 Mac 为主机的个人工作台，功能拆成四个互相独立的模块：日常对话、科研、固定形象短视频、热点捕获。日常对话与文件回传使用本地模型；科研/视频/热点各有自己的设置、入口和任务状态，不跨模块串工作流。高算力视频任务规划为云端按任务突发。
 
-## 目标机器
-
-当前主机检测到 Mac Studio / Apple M4 Max / 36 GB 统一内存。先试 `mlx-community/Qwen3-14B-4bit`：模型权重约 8.31 GB，给上下文缓存、系统和剪辑软件留有余量；如果响应延迟过高，再降到 Qwen3-8B 4-bit。模型卡提供了 mlx-lm 对话和 OpenAI 兼容服务的启动方式。[14B 模型卡](https://huggingface.co/mlx-community/Qwen3-14B-4bit)、[8B 模型卡](https://huggingface.co/mlx-community/Qwen3-8B-4bit)。不要同时常驻两个大模型。质量关键、需要联网引证的任务优先让 Codex 做人工深度分析/复核；不要把 Codex 订阅视作可由这个独立服务任意调用的 API。
 
 ## 安装依赖并管理模型
 
