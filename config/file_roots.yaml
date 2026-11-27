@@ -1,0 +1,14 @@
+# Slack 文件回传允许访问的目录。请只加入你愿意从手机取回的目录。
+# 路径支持 ~；所有用户传入路径都会限制在对应目录内，不能用 ../ 越界。
+roots:
+  codex: ~/Documents/Codex
+  downloads: ~/Downloads
+  desktop: ~/Desktop
+  videos: ~/Movies
+  photos: ~/Pictures
+
+# 单文件/压缩包 Slack 上传上限；若工作区限制更小请调低。
+max_upload_mb: 100
+# 防止压缩前扫描/处理无界大的视频目录。
+max_uncompressed_mb: 1024
+max_files_per_archive: 5000

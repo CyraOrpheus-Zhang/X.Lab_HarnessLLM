@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xue-harness"
+version = "0.1.0"
+description = "Local-first personal multi-agent harness"
+requires-python = ">=3.11"
+dependencies = [
+  "openai>=1.40",
+  "httpx2>=2.0",
+  "huggingface_hub>=0.25",
+  "mlx-lm>=0.30",
+  "python-dotenv>=1.0",
+  "PyYAML>=6.0",
+  "typer>=0.12",
+  "rich>=13.7",
+  "slack-bolt>=1.20",
+]
+
+[project.scripts]
+xue-harness = "xue_harness.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,10 @@
+module:
+  id: hot_capture
+  title: 热点捕获与观察
+  status: scaffold
+  feeds:
+    positivity_news: [official_rss, academic_rss, public_news_sources]
+    anime_topics: [authorized_public_trend_sources, user_submitted_links]
+  pipeline: [collect_metadata, deduplicate, summarize, transcribe_when_authorized, notify_slack]
+  account_actions: manual_confirmation_required
+  capabilities_planned: [scheduled_trend_scan, local_transcription, slack_digest]

@@ -1,0 +1,8 @@
+module:
+  id: daily_chat
+  title: 日常对话
+  status: active
+  entrypoints: [cli.ask, slack.dm, slack.mention]
+  agent: daily_assistant
+  capabilities: [conversation_memory, allowed_user_file_relay]
+  boundaries: [local_model_only, allowlisted_slack_users, configured_file_roots_only]

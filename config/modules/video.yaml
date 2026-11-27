@@ -1,0 +1,21 @@
+module:
+  id: video
+  title: 固定动漫数字人视频制作
+  status: scaffold
+  generation:
+    # 创意文案适当提高随机性；若文案不稳定可降到 0.5。
+    temperature: 0.75
+    # 留出较多表达变化，范围仍限制在高概率词附近。
+    top_p: 0.95
+    # 控制口播脚本和分镜总长度，避免超长稿。
+    max_tokens: 2048
+  workflows:
+    short_video:
+      steps:
+        - agent: video_producer
+          output: 原创口播稿、分镜、字幕节奏、角色动作和音乐情绪
+        - agent: content_reviewer
+          output: 事实、素材/音乐/声音授权及发布前检查清单
+  stages: [topic, script, voice_svc, avatar_animation, edit_timeline, render, human_review]
+  compute: local_by_default; cloud_only_for_approved_high_compute_jobs
+  capabilities_planned: [local_svc, fixed_avatar_assets, subtitle_render, jianying_draft_export]

@@ -1,0 +1,31 @@
+# Cloud executor policy. Disabled until a provider account, live price check,
+# billing alerts, and an automatic cleanup path are configured.
+enabled: false
+provider: runpod
+timezone: Asia/Hong_Kong
+monthly_budget_usd: 10.00
+per_job_budget_usd: 2.00
+max_job_minutes: 90
+max_gpu_hourly_usd: 1.25
+choose_lowest_available_offer: true
+max_wait_hours_for_deferrable_jobs: 24
+allowed_windows: []
+default_route: local
+cloud_job_types:
+  - image_generation_batch
+  - short_video_generation
+  - batch_audio_conversion
+never_cloud_without_user_confirmation:
+  - zotero_library_upload
+  - personal_file_upload
+  - social_platform_account_actions
+required_before_launch:
+  - provider_live_price_below_maximum
+  - monthly_budget_reserved
+  - job_estimate_below_per_job_budget
+  - hard_timeout_configured
+  - output_path_and_retention_confirmed
+cleanup:
+  terminate_worker_after_job: true
+  remove_ephemeral_volume_after_download: true
+  persist_only_final_outputs: true

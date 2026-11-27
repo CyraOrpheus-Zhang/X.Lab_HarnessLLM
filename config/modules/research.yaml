@@ -1,0 +1,20 @@
+module:
+  id: research
+  title: 科研工作台
+  status: scaffold
+  generation:
+    # 科研更重视重复性与少编造；0.2 偏稳健。
+    temperature: 0.2
+    # 收紧候选概率，保持术语和结论表达更一致。
+    top_p: 0.9
+    # 文献矩阵需要比普通聊天更长的输出。
+    max_tokens: 4096
+  workflows:
+    paper_brief:
+      steps:
+        - agent: research_assistant
+          output: 根据用户原文提取问题、方法、样本、主要发现、局限及页码；缺少原文时输出研究设计框架和待检索字段，不推造文献事实
+        - agent: academic_reviewer
+          output: 检查证据缺口、来源位置、虚构/未核实引文和方法学问题
+  sources: [zotero, user_provided_pdf, authorized_journal_export, rss]
+  capabilities_planned: [zotero_read, pdf_extract, citation_check, academic_news_digest]

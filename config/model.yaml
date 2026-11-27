@@ -1,0 +1,33 @@
+# 本地 MLX 模型与回答风格。这里调整的是生成时的参数，不会改写/训练模型权重。
+model:
+  # Hugging Face 仓库 ID，或下方 local_path 指向的本机模型目录。
+  # MLX 量化模型示例：mlx-community/Qwen3-14B-4bit（约 8.31 GB 权重）。
+  repo_id: mlx-community/Qwen3-14B-4bit
+  local_path: models/qwen3-14b-4bit
+  # 本地模型 API 地址；仅让本机访问，勿改成公网地址。
+  base_url: http://127.0.0.1:8080/v1
+  server_host: 127.0.0.1
+  server_port: 8080
+
+server:
+  # 并发生成数量。个人单用户建议 1，避免多个长回答抢统一内存。
+  decode_concurrency: 1
+  # 同时处理的输入提示数。1 更稳、省内存；提高会增加峰值占用。
+  prompt_concurrency: 1
+  # 预填充分块大小；越小越省峰值内存，长输入处理会更慢。
+  prefill_step_size: 1024
+  # KV 缓存位宽。null 表示不量化；8/4 可省长上下文内存，可能损失少量精度。
+  kv_cache_bits: null
+
+generation:
+  # 温度：越低越稳定，越高越发散。科研摘要建议 0.1–0.3；创意文案可用 0.6–0.9。
+  temperature: 0.3
+  # 核采样范围 0–1；越低候选词越集中。通常 0.85–0.95，不建议和温度同时大幅调低。
+  top_p: 0.9
+  # 每次最多生成多少 token。约 1 token ≈ 0.5–1 个中文字符（随模型分词而变）。
+  max_tokens: 2048
+  # 发给模型的历史对话条数；每条包含一条用户消息或一条模型答复。
+  conversation_history_messages: 12
+
+# 内存提示：4-bit 表示权重经过 4 位量化，不等于模型只有 4GB。
+# 实际内存 = 权重文件 + 上下文 KV 缓存 + macOS/其他 App。先保留至少 8GB 给系统和剪辑软件。
